@@ -1,0 +1,30 @@
+<view class="">
+    <SearchInput></SearchInput>
+    <!-- 监听点击事件 -->
+    <Tabs tabs="{{tabs}}" bindtabsItemChange="handelTabsItemChange">
+        <block wx:if="{{tabs[0].isActive}}">
+            <view class="first_tab">
+                <navigator 
+                    class="goods_item"
+                    wx:for="{{goodsList}}"
+                    wx:for-item="v"
+                    wx:for-index="i"
+                    wx:key="i"
+                    url="/pages/goods_detail/goods_detail?goods_id={{v.goods_id}}"
+                >
+                    <!-- 左侧图片容器 -->
+                    <view class="goods_img">
+                        <image src="{{v.goods_small_logo?v.goods_small_logo:'https://image.suning.cn/uimg/sop/commodity/201348771512088359278892_x.jpg?from=mobile&format=80q.jpg'}}" mode="widthFix"></image>
+                    </view>
+                    <!-- 右侧商品文字容器 -->
+                    <view class="goods_info_wrap">
+                        <view class="goods_name">{{v.goods_name}}</view>
+                        <view class="goods_price">{{v.goods_price}}</view>
+                    </view>
+                </navigator>
+            </view>
+        </block>
+        <block wx:elif="{{tabs[1].isActive}}">1</block>
+        <block wx:elif="{{tabs[2].isActive}}">2</block>
+    </Tabs>
+</view>
